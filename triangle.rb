@@ -15,11 +15,17 @@
 #
 def triangle(a, b, c)
   # raise TriangleError, "Side lengths must be greater than zero" if CONDITION
+  raise TriangleError,\
+    "side lengths must be greater than zero" \
+    if (a <= 0) || (b <= 0) || (c <= 0)
   # raise TriangleError, "Side lenghts may not be negative" if CONDITION
+  raise TriangleError, \
+    "The addition of ant two side lenghts must be equal or greater than the third" \
+    if (a+b <= c) || (a+c <= b) || (b+c <= a)
   if a == b && b == c
     return :equilateral
   elsif (a == b && a != c) || (a == c && a != b) || (b == c && b != a)
-    return :isosceles    
+    return :isosceles
   elsif a != b && a != c && b != c
     return :scalene
   else
@@ -30,6 +36,3 @@ end
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
 end
-
-
-# rewrite triange with tests included
