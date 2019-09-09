@@ -31,6 +31,19 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  score = 0
+  # set up rules
+  # 3,3,3 rule
+  score += 1000 if (dice.count(1) / 3) == 1
+  # 5 rule
+  score += (dice.count(5) % 3) * 50
+  # 1 rule
+  score += (dice.count(1) % 3) * 100
+  # all other triplets
+  [2, 3, 4, 5, 6].each do |num|
+    score += num * 100 if (dice.count(num) / 3) == 1
+  end
+  score
 end
 
 class AboutScoringProject < Neo::Koan

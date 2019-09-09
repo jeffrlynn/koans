@@ -1,10 +1,31 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 # Implement a DiceSet Class here:
-#
-# class DiceSet
-#   code ...
-# end
+class DiceSet
+  # apparently this is what a class variable looks like in ruby
+  attr_reader :values
+
+  # def roll(num_dice)
+  #   # initialize set of dice
+  #   dice_values = []
+  #   # roll as many times as indicated in method call
+  #   num_dice.times do
+  #     # possible die values
+  #     possible_values = [1, 2, 3, 4, 5, 6]
+  #     # get a random roll
+  #     new_roll = possible_values.sample
+  #     # append roll to list of rolls
+  #     dice_values << new_roll
+  #   end
+  #   # assign class variable to the list of values
+  #   @values = dice_values
+  # end
+
+  # more condensed method
+  def roll (num_dice)
+    @values = (0...num_dice).map {1 + rand(6)}
+  end
+end
 
 class AboutDiceProject < Neo::Koan
   def test_can_create_a_dice_set
